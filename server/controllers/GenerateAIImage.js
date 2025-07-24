@@ -11,6 +11,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // Controller to generate Image
+
 export const generateImage = async (req, res, next) => {
   try {
     const { prompt } = req.body;
@@ -22,12 +23,12 @@ export const generateImage = async (req, res, next) => {
       response_format: "b64_json",
     });
     const generatedImage = response.data.data[0].b64_json;
-    res.status(200).json({ photo: generatedImage });
+    return res.status(200).json({ photo: generatedImage });
   } catch (error) {
     next(
       createError(
         error.status,
-        error?.response?.data?.error.message || error.message
+        error?.response?.data?.error?.message || error?.message
       )
     );
   }
