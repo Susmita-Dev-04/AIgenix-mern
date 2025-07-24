@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "./button";
 import TextInput from "./TextInput";
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
-import { CreatePost, GenerateImageFromPrompt } from "../api"; // ✅ Fixed import
+import { CreatePost, GenerateAIImage } from "../api"; // ✅ Correct import
 
 const Form = styled.div`
   flex: 1;
@@ -56,11 +56,11 @@ const GenerateImageForm = ({
 
   const generateImageFun = async () => {
     setGenerateImageLoading(true);
-    await GenerateImageFromPrompt({ prompt: post.prompt }) // ✅ Fixed usage
+    await GenerateAIImage({ prompt: post.prompt }) // ✅ Correct usage
       .then((res) => {
         setPost({
           ...post,
-          photo: `data:image/jpg;base64,${res?.data?.photo}`,
+          photo: `data:image/jpg;base64,${res?.data?.photo}`, // ✅ Correct image MIME
         });
         setGenerateImageLoading(false);
       })
@@ -118,7 +118,7 @@ const GenerateImageForm = ({
           leftIcon={<AutoAwesome />}
           isLoading={generateImageLoading}
           isDisabled={post.prompt === ""}
-          onClick={() => generateImageFun()}
+          onClick={generateImageFun}
         />
         <Button
           text="Post Image"
@@ -129,7 +129,7 @@ const GenerateImageForm = ({
           isDisabled={
             post.name === "" || post.prompt === "" || post.photo === ""
           }
-          onClick={() => createPostFun()}
+          onClick={createPostFun}
         />
       </Actions>
     </Form>
