@@ -22,9 +22,6 @@ export const darkTheme = {
   orange: "#F7AD63",
 };
 
-
-
-
 export const lightTheme = {
   bg: "#f9f9f9",
   bgLight: "#FFFFFF",
