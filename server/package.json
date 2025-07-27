@@ -9,7 +9,6 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-
   "dependencies": {
     "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
@@ -18,5 +17,6 @@
     "mongoose": "^8.16.4",
     "nodemon": "^3.1.10",
     "openai": "^3.1.0"
-  }
+  },
+  "devDependencies": {}
 }
